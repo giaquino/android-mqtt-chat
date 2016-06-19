@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="chat_theme" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:statusBarColor">@color/chat_primary_dark</item>
+        <item name="colorPrimary">@color/chat_primary</item>
+        <item name="colorPrimaryDark">@color/chat_primary_dark</item>
+        <item name="colorAccent">@color/chat_accent</item>
+        <item name="android:windowBackground">@android:color/white</item>
+    </style>
+
+    <style name="chat_theme_login" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="colorPrimary">@android:color/white</item>
+        <item name="android:windowBackground">@color/chat_accent</item>
+    </style>
+
+</resources>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.giaquino.chat.common.widget.ConnectionStateView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/chat_connection_state"
+    android:layout_width="match_parent"
+    android:layout_height="40dp"
+    android:background="@android:color/holo_red_light"
+    android:contentDescription="@string/chat_cd_send_message"
+    android:fitsSystemWindows="true">
+
+    <TextView
+        android:id="@+id/chat_connection_state_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:drawableEnd="@drawable/chat_ic_refresh"
+        android:drawablePadding="8dp"
+        android:drawableRight="@drawable/chat_ic_refresh"
+        android:fontFamily="sans-serif-medium"
+        android:gravity="center"
+        android:text="@string/chat_label_disconnected"
+        android:textColor="@android:color/white"
+        android:textSize="16dp"
+        tools:ignore="SpUsage"/>
+
+
+</com.giaquino.chat.common.widget.ConnectionStateView>

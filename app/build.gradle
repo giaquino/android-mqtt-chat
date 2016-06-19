@@ -1,0 +1,96 @@
+apply plugin: "com.android.application"
+apply plugin: "com.neenbedankt.android-apt"
+apply plugin: "me.tatarka.retrolambda"
+apply plugin: "com.squareup.sqldelight"
+
+android {
+
+    compileSdkVersion configs.compileSDK
+    buildToolsVersion configs.buildToolVersion
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    defaultConfig {
+        applicationId configs.applicationId
+        versionCode configs.code
+        versionName configs.name
+        minSdkVersion configs.minSDK
+        targetSdkVersion configs.targetSDK
+    }
+
+    buildTypes {
+        debug {
+            debuggable true
+            minifyEnabled false
+            zipAlignEnabled true
+            versionNameSuffix "-DEBUG"
+        }
+        //TODO: need to setup proguard config for release
+        //TODO: change signing configs for release
+        release {
+            debuggable false
+            minifyEnabled false
+            zipAlignEnabled true
+            versionNameSuffix "-RELEASE"
+            signingConfig signingConfigs.debug
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    packagingOptions {
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/services/javax.annotation.processing.Processor'
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile "com.facebook.android:facebook-android-sdk:4.12.1"
+    compile('org.eclipse.paho:org.eclipse.paho.android.service:1.0.2') {
+        exclude module: 'support-v4'
+    }
+
+    compile libraries.supportAnnotations
+    compile libraries.supportDesign
+    compile libraries.supportAppCompat
+    compile libraries.supportRecyclerView
+
+    compile libraries.butterknife
+    apt libraries.butterknifeCompiler
+    compile libraries.dagger
+    apt libraries.daggerCompiler
+
+    compile libraries.okhttp
+    //compile libraries.retrofit
+    //compile libraries.retrofitRxJavaAdapter
+    //compile libraries.retrofitJacksonConverter
+    compile libraries.jackson
+
+    compile libraries.sqlbrite
+
+    compile libraries.picasso
+    compile libraries.picassoOkHttp
+
+    compile libraries.rxJava
+    compile libraries.rxAndroid
+    compile libraries.timber
+    compile libraries.autoValue
+    apt libraries.autoValueRedactedCompiler
+    apt libraries.autoValueParcelableCompiler
+
+    debugCompile libraries.okhttpLogIntercepter
+    debugCompile libraries.stetho
+    debugCompile libraries.stethoOkHttp
+    debugCompile libraries.leakCanary
+    releaseCompile libraries.leakCanaryNoop
+
+    testCompile libraries.junit
+    testCompile libraries.mockitoCore
+    testCompile libraries.hamcrestCore
+}

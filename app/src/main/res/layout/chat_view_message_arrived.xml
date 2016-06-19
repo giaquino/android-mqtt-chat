@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/chat_view_message_image_view_profile"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="bottom"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"/>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="48dp"
+        android:layout_marginRight="48dp"
+        android:padding="8dp"
+        android:background="@drawable/chat_bg_message_arrived"
+        android:minWidth="160dp">
+
+        <TextView
+            android:id="@+id/chat_view_message_text_view_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:textSize="12sp"
+            tools:text="Gian Darren Azriel Aquino"/>
+
+        <TextView
+            android:id="@+id/chat_view_message_text_view_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
+            tools:text="Hello Gian!"/>
+
+    </LinearLayout>
+
+</LinearLayout>

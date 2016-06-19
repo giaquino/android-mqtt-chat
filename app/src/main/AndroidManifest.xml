@@ -1,0 +1,55 @@
+<manifest
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.giaquino.chat">
+
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+
+    <application
+        android:name=".ChatApplication"
+        android:allowBackup="false"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/chat_app_name"
+        android:supportsRtl="true"
+        android:theme="@style/chat_theme_login">
+
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/chat_facebook_app_id"/>
+
+        <service android:name="org.eclipse.paho.android.service.MqttService"/>
+
+        <activity
+            android:name=".ui.login.LoginActivity"
+            android:theme="@style/chat_theme_login">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".ui.chat.ChatActivity"
+            android:theme="@style/chat_theme"/>
+
+        <activity
+            android:name="com.facebook.FacebookActivity"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:label="@string/chat_app_name"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+
+        <activity
+            android:name="com.facebook.CustomTabActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="@string/chat_fb_login_protocol_scheme"/>
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

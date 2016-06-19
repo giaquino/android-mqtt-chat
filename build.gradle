@@ -1,0 +1,31 @@
+apply from: "dependencies.gradle"
+
+buildscript {
+
+    apply from: "dependencies.gradle"
+
+    repositories {
+        jcenter()
+        maven {
+            url "https://repo.eclipse.org/content/repositories/paho-releases/"
+        }
+    }
+
+    dependencies {
+        classpath gradlePlugins.android
+        classpath gradlePlugins.apt
+        classpath gradlePlugins.retrolambda
+        classpath gradlePlugins.lombok
+        classpath gradlePlugins.sqldelight
+    }
+}
+
+allprojects {
+    repositories {
+        jcenter()
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

@@ -1,0 +1,12 @@
+CREATE TABLE profile (
+    _id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    facebookId TEXT NOT NULL,
+    name TEXT NOT NULL,
+    picture TEXT NOT NULL,
+    UNIQUE (facebookId) ON CONFLICT REPLACE );
+
+drop_table:
+DROP TABLE IF EXISTS profile;
+
+select_profile:
+SELECT * FROM profile LIMIT 1;

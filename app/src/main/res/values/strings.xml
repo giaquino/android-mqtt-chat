@@ -1,0 +1,13 @@
+<resources>
+    <string name="chat_app_name">android-mqtt-chat</string>
+    <string name="chat_facebook_app_id">145827485834763</string>
+    <string name="chat_fb_login_protocol_scheme">fb145827485834763</string>
+
+    <string name="chat_label_message">Message</string>
+    <string name="chat_label_disconnected">Disconnected</string>
+    <string name="chat_label_connecting">Connecting…</string>
+    <string name="chat_label_connected">Connected</string>
+
+    <string name="chat_cd_send_message">Send Message</string>
+    <string name="chat_cd_useless">Image</string>
+</resources>
