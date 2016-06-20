@@ -15,4 +15,6 @@ public interface MqttConnectionListener {
     @MainThread void onDisconnectionSuccess();
 
     @MainThread void onDisconnectionFailure(Throwable cause);
+
+    @MainThread void onConnectionLost(Throwable cause);
 }

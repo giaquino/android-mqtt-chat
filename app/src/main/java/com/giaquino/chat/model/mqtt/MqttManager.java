@@ -197,6 +197,14 @@ public class MqttManager implements MqttCallback {
         });
     }
 
+    private void notifyConnectionLost(Throwable cause) {
+        MAIN_THREAD_HANDLER.post(() -> {
+            if (mqttConnectionListener != null) {
+                mqttConnectionListener.onConnectionLost(cause);
+            }
+        });
+    }
+
     private void notifySubscriptionSuccess(String topic, int qos) {
         MAIN_THREAD_HANDLER.post(() -> {
             if (mqttSubscriptionListener != null) {
@@ -230,7 +238,7 @@ public class MqttManager implements MqttCallback {
     }
 
     @Override public void connectionLost(Throwable cause) {
-        notifyConnectionFailure(cause);
+        notifyConnectionLost(cause);
     }
 
     @Override public void messageArrived(String topic, MqttMessage message) throws Exception {

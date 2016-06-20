@@ -23,7 +23,8 @@
 
         <activity
             android:name=".ui.login.LoginActivity"
-            android:theme="@style/chat_theme_login">
+            android:theme="@style/chat_theme_login"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
@@ -32,7 +33,8 @@
 
         <activity
             android:name=".ui.chat.ChatActivity"
-            android:theme="@style/chat_theme"/>
+            android:theme="@style/chat_theme"
+            android:screenOrientation="portrait"/>
 
         <activity
             android:name="com.facebook.FacebookActivity"
@@ -50,6 +52,7 @@
                 <data android:scheme="@string/chat_fb_login_protocol_scheme"/>
             </intent-filter>
         </activity>
+
     </application>
 
 </manifest>

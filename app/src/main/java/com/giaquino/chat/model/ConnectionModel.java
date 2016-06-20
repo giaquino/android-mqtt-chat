@@ -32,7 +32,7 @@ public class ConnectionModel {
             }
 
             @Override public void onConnectionFailure(Throwable cause) {
-                Timber.d("Connection failure: %s", cause.getMessage());
+                Timber.d("Connection failure!");
                 publish(ConnectionState.DISCONNECTED);
             }
 
@@ -42,8 +42,13 @@ public class ConnectionModel {
             }
 
             @Override public void onDisconnectionFailure(Throwable cause) {
-                Timber.d("Disconnection failure: %s", cause.getMessage());
+                Timber.d("Disconnection failure!");
                 publish(lastConnectionState);
+            }
+
+            @Override public void onConnectionLost(Throwable cause) {
+                Timber.d("Connection lost!");
+                publish(ConnectionState.DISCONNECTED);
             }
         });
         lastConnectionState =

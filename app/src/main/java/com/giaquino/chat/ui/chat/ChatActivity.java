@@ -99,15 +99,26 @@ public class ChatActivity extends BaseActivity
         initialize();
     }
 
+    @Override protected void onStart() {
+        super.onStart();
+        if (connectionStore.connectionState() == ConnectionModel.ConnectionState.DISCONNECTED) {
+            connectionActionCreator.connect();
+        }
+    }
+
+    @Override protected void onStop() {
+        super.onStop();
+        if (connectionStore.connectionState() == ConnectionModel.ConnectionState.CONNECTED) {
+            connectionActionCreator.disconnect();
+        }
+    }
+
     public void initialize() {
         chatMessageAdapter = new ChatMessageAdapter(this, imageLoader, this);
         mRecyclerView.setLayoutManager(
             new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, true));
         mRecyclerView.setAdapter(chatMessageAdapter);
         mRecyclerView.addItemDecoration(new MarginDecoration(mVerticalMargin, mHorizontalMargin));
-        if (connectionStore.connectionState() == ConnectionModel.ConnectionState.DISCONNECTED) {
-            connectionActionCreator.connect();
-        }
         addSubscriptionToUnsubscribe(connectionStore.asObservable().subscribe(store -> {
             mConnectionStateView.setConnectionState(store.connectionState());
             switch (store.connectionState()) {
